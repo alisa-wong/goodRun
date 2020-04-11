@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+
+    h1.display-4.m-b-2 Log In with Access Code
+    form(method='POST' action='/players/login')
+        div
+            label(for='accessCode') Access Code
+            input(type='text' id='accessCode' placeholder='a7b19a10-a222-49b9-b228-0a17ea06e6e5' name='accessCode')
+        button(type='submit') Log in 
+
+    #proposedGames
+        div(class="table-header")
+        div(v-for = "day in days" class="table-header") {{day.getDay()}}
+        div(
+            v-for = "(time,index) in times"
+            class="time-stamp"
+            :style = "{gridColumn: '1', gridRow: index + 2}"
+        ) {{time}}
+        div(
+            v-for = "game in games"
+            :class = "game.signups === game.maxSignups ? 'full game' : 'game' "
+            :style = "{gridColumn: searchDay(days, game.date) + 2, gridRow: times.indexOf(game.time[0]) + 2 + '/' + (times.indexOf(game.time[1]) + 2)}"
+        )
+            div(class = "game-frome") From: {{game.time[0]}}
+            div(class = "game-to") To: {{game.time[1]}}
+            div(class = "game-location") {{game.location}}
+            div(class = "game-sign-up") {{game.signups}}/{{game.maxSignups}}
+

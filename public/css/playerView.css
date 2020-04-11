@@ -1,0 +1,8 @@
+table, th, td {
+    border: 1px solid black;
+    user-select: none;
+}
+
+.available {
+    background-color: #7FFF00;
+}

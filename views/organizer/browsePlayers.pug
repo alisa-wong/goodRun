@@ -1,0 +1,16 @@
+table(class="table table-hover mt-3")
+    thead
+        tr
+            th(scope="col") First Name
+            th(scope="col") Last Name
+            th(scope="col") Email
+            th(scope="col") Phone
+            th(scope="col") Position
+    tbody
+        each player in players
+            tr
+                td=player.firstName
+                td=player.lastName
+                td=player.email
+                td=player.phone
+                td=player.position

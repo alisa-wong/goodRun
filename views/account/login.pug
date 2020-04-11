@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+
+    div.m-4
+        h1.mt-2.mb-2 Log In
+        form(method='POST' action='/login' class='w-25 d-flex flex-column')
+            div.form-group
+                label(for='username') Username
+                input(type='text' id='username' placeholder='username' name='username' class='form-control')
+            div.form-group
+                label(for='password') Password
+                input(type='password' id='password' placeholder='password' name='password' class='form-control')
+            button(type='submit' class='btn btn-primary align-self-end') Log in

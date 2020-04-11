@@ -1,0 +1,35 @@
+- let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+- let granularity = 15
+- let startHour = 8
+- let endHour = 24
+table(id="availability-table")
+    tr
+        each day in days
+            th=day
+    - hour = startHour
+    while hour < endHour
+        - let minute = 0
+        - let tod = "am"
+        if hour/12.0 >= 1.0 && hour/12.0 < 2.0
+            - tod = "pm"
+        while minute < 60
+            tr 
+                each day in days
+                    - let blockId = "" + day + "-" + hour + ":" + minute
+                    - displayMinute = minute
+                    - displayHour = hour%12
+                    - classes = "availability-block"
+                    - blockIndex = hour*4 + minute%15
+                    - dayIndex = days.indexOf(day)
+                    if minute < 10
+                        - displayMinute = "0" + minute
+                    if displayHour == 0
+                        - displayHour = "12"
+                    if user.availabilityBlocks[blockIndex][dayIndex] == 1
+                        - classes = "availability-block available"
+                    td(id=blockId class=classes style=style) #{displayHour}:#{displayMinute} #{tod}
+
+            - minute += granularity
+        - hour++
+
+button(id="update-availability") save

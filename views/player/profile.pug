@@ -1,0 +1,54 @@
+p user: #{user.firstName} #{user.lastName}
+p email: #{user.email}
+p phone: #{user.phone}
+if user.homeLocation
+    p home location: #{user.homeLocation}
+else
+    p home location: 
+        i Not Specified
+if user.workLocation
+    p work location: #{user.workLocation}
+else
+    p work location: 
+        i Not Specified
+if user.willTravel == 1
+    p willing to travel: Yes
+else if user.willTravel == 0
+    p willing to travel: No
+else
+    p willing to travel: 
+        i Not Specified
+
+h2.mt-5 Edit Profile
+form(method="post" action="players/update")
+    div
+        label(for='email') Email
+        input(type='email' id='email' value=user.email name='email' required=true)
+    div
+        label(for='phone') Phone
+        input(type='text' id='phone' value=user.phone name='phone' required=true)
+    div
+        label(for='willTravel') Willing to Travel?
+        if user.willTravel == 0
+            input(type='checkbox' id='willTravel' name='willTravel')
+        else 
+            input(type='checkbox' id='willTravel' name='willTravel' checked)
+    div
+        label(for='homeLocation') Home Location
+        select(type='select' id='homeLocation' name='homeLocation' required=true)
+            option Select
+            for location in locations
+                if location.id == user.homeRegionId
+                    option(value=location.id selected=true) #{location.name}
+                else
+                    option(value=location.id) #{location.name}
+    div
+        label(for='workLocation') Work Location
+        select(type='select' id='workLocation' name='workLocation' required=true)
+            option Select
+            for location in locations
+                if location.id == user.workRegionId
+                    option(value=location.id selected=true) #{location.name}
+                else
+                    option(value=location.id) #{location.name}
+    button(type='submit') Submit 

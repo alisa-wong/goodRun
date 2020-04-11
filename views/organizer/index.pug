@@ -1,0 +1,37 @@
+extends ../layout.pug
+
+block head
+    link(rel='stylesheet', href='/static/css/organizerView.css')
+    script(src='/static/js/organizerView.js')
+
+block content
+
+    div(class="m-4")
+
+        ul(class="nav nav-tabs" id="myTab" role="tablist")
+            li(class="nav-item")
+                a(class="nav-link active" id="games-tab" data-toggle="tab" href="#games" role="tab" aria-controls="games" aria-selected="true") Games
+            li(class="nav-item")
+                a(class="nav-link"  id="players-tab" data-toggle="tab" href="#players" role="tab" aria-controls="players" aria-selected="false") Players
+            li(class="nav-item")
+                a(class="nav-link" id="courts-tab" data-toggle="tab" href="#courts" role="tab" aria-controls="courts" aria-selected="false") Courts
+        
+        div(class="tab-content" id="myTabContent")
+            div(class="tab-pane fade show active" id="games" role="tabpanel" aria-labelledby="games-tab")
+                section(class="p-3")
+                    h2.mt-5 Current Proposed Games
+                    include proposedGames.pug
+
+                section(class="p-3")
+                    h2.mt-5 New Game
+                    include newGame.pug
+
+                section(class="p-3")    
+                    h2.mt-5 Player Availabilities
+                    include playerAvailability.pug
+            
+            div(class="tab-pane fade" id="players" role="tabpanel" aria-labelledby="players-tab")
+                section(class="p-3")
+                    include browsePlayers.pug
+
+            div(class="tab-pane fade" id="courts" role="tabpanel" aria-labelledby="courts-tab")

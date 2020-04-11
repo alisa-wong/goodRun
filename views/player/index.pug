@@ -1,0 +1,40 @@
+extends ../layout.pug
+
+block head
+    link(rel='stylesheet', href='/static/css/playerView.css')
+    script(src='/static/js/playerView.js')
+
+block content
+    div(class="m-4")
+
+        ul(class="nav nav-tabs" id="myTab" role="tablist")
+            li(class="nav-item")
+                a(class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true") Profile
+            li(class="nav-item")
+                a(class="nav-link"  id="calendar-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="calendar" aria-selected="false") Game Calendar
+            li(class="nav-item")
+                a(class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false") Game Map
+        
+        div(class="tab-content" id="myTabContent")
+            div(class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab")
+                section(class="p-3")
+                    h2.mt-5 Profile 
+                    include profile.pug
+
+                    h2.mt-5 General Availability
+                    include availability.pug
+            
+            div(class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="calendar-tab")
+                section(class="p-3")
+                    h2.mt-5 Game Calendar
+                    include calendarView.pug
+
+            div(class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab")
+                section(class="p-3")
+                    h2.mt-5 Game Map
+                    include mapView.pug
+
+        
+
+
+        

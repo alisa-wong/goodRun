@@ -1,0 +1,28 @@
+h1 Create New User
+form(method="post", action="/users/create")
+    div
+        label(for='firstName') First Name
+        input(type='text' id='firstName' placeholder='Brandon' name='firstName' required=true)
+    div
+        label(for='lastName') Last Name
+        input(type='text' id='lastName' placeholder='Huang' name='lastName' required=true)
+    div
+        label(for='email') Email
+        input(type='email' id='email' placeholder='brandon@gmail.com' name='email' required=true)
+    div
+        label(for='phone') Phone
+        input(type='text' id='phone' placeholder='(123)456-7890' name='phone' required=true)
+    div
+        label(for='username') Username
+        input(type='text' id='username' placeholder='bhuang' name='username' required=false)
+    div
+        label(for='password') Password
+        input(type='password' id='password' placeholder='***********' name='password' required=false)
+    div
+        label(for='gender') Gender
+        select(type='select' id='gender' name='gender' required=true)
+            option Select
+            option(value='female') Female
+            option(value='male') Male
+
+    button(type='submit') Submit 
